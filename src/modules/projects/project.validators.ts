@@ -3,7 +3,10 @@ import { ProjectStatus } from "../../entities/project.entity";
 import { env } from "../../config/env";
 
 export const listProjectsValidator = [
-  query("limit").optional().isInt({ min: 1, max: env.pagination.maxLimit }).toInt(),
+  query("limit")
+    .optional()
+    .isInt({ min: 1, max: env.pagination.maxLimit })
+    .toInt(),
   query("cursor").optional().isString(),
 ];
 
@@ -12,10 +15,10 @@ export const projectIdValidator = [
 ];
 
 export const createProjectValidator = [
-  body("name")
+  body("title")
     .trim()
     .notEmpty()
-    .withMessage("Project name is required")
+    .withMessage("Project title is required")
     .isLength({ min: 1, max: 150 }),
   body("description")
     .optional({ nullable: true })
@@ -25,7 +28,7 @@ export const createProjectValidator = [
 
 export const updateProjectValidator = [
   param("id").isUUID().withMessage("Project id must be a valid UUID"),
-  body("name").optional().trim().isLength({ min: 1, max: 150 }),
+  body("title").optional().trim().isLength({ min: 1, max: 150 }),
   body("description")
     .optional({ nullable: true })
     .isString()

@@ -1,69 +1,12 @@
 {
   "info": {
+    "_postman_id": "b07f1a11-250b-46b3-baad-f65bdb5888e1",
     "name": "Electro Pi API",
+    "description": "",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "API documentation for the Electro Pi Node project. All authenticated routes require a Bearer token obtained from POST /api/auth/login."
+    "_exporter_id": "15677178"
   },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:3000",
-      "type": "string"
-    },
-    {
-      "key": "token",
-      "value": "",
-      "type": "string",
-      "description": "Set this after calling POST /api/auth/login"
-    },
-    {
-      "key": "projectId",
-      "value": "",
-      "type": "string",
-      "description": "Set this after creating or listing a project"
-    },
-    {
-      "key": "taskId",
-      "value": "",
-      "type": "string",
-      "description": "Set this after creating or listing a task"
-    }
-  ],
   "item": [
-    {
-      "name": "Health",
-      "item": [
-        {
-          "name": "GET /health",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/health",
-              "host": ["{{baseUrl}}"],
-              "path": ["health"]
-            },
-            "description": "Check that the server is running."
-          },
-          "response": [
-            {
-              "name": "200 OK",
-              "status": "OK",
-              "code": 200,
-              "originalRequest": {
-                "method": "GET",
-                "url": {
-                  "raw": "{{baseUrl}}/health",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["health"]
-                }
-              },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"status\": \"ok\"\n}"
-            }
-          ]
-        }
-      ]
-    },
     {
       "name": "Auth",
       "item": [
@@ -71,39 +14,64 @@
           "name": "POST /api/auth/register",
           "request": {
             "method": "POST",
-            "url": {
-              "raw": "{{baseUrl}}/api/auth/register",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "auth", "register"]
-            },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"fullName\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "raw": "{\n  \"fullName\": \"Mohammed Zaki\",\n  \"email\": \"mohammed@gmail.com\",\n  \"password\": \"admin123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "register"]
             },
             "description": "Register a new user. Returns the created user object (no token — call login next)."
           },
           "response": [
             {
               "name": "201 Created",
-              "status": "Created",
-              "code": 201,
               "originalRequest": {
                 "method": "POST",
-                "url": {
-                  "raw": "{{baseUrl}}/api/auth/register",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "auth", "register"]
-                },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"fullName\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123\"\n}"
+                  "raw": "{\n  \"fullName\": \"Mohammed Zaki\",\n  \"email\": \"mohammed@gmail.com\",\n  \"password\": \"admin123\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/auth/register",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "auth", "register"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"user\": {\n    \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n    \"fullName\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"roles\": [\"user\"]\n  }\n}"
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"user\": {\n    \"id\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n    \"fullName\": \"Mohammed Zaki\",\n    \"email\": \"mohammed@gmail.com\",\n    \"roles\": [\"user\"]\n  }\n}"
             }
           ]
         },
@@ -119,45 +87,72 @@
                   "  pm.collectionVariables.set('token', json.accessToken);",
                   "}"
                 ],
-                "type": "text/javascript"
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "POST",
-            "url": {
-              "raw": "{{baseUrl}}/api/auth/login",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "auth", "login"]
-            },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "raw": "{\n  \"email\": \"mohammed@gmail.com\",\n  \"password\": \"admin123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "auth", "login"]
             },
             "description": "Login with email and password. The test script automatically saves the returned `accessToken` to the `{{token}}` collection variable."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
                 "method": "POST",
-                "url": {
-                  "raw": "{{baseUrl}}/api/auth/login",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "auth", "login"]
-                },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123\"\n}"
+                  "raw": "{\n  \"email\": \"mohammed@gmail.com\",\n  \"password\": \"admin123\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/auth/login",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "auth", "login"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"user\": {\n    \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n    \"fullName\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"roles\": [\"user\"]\n  },\n  \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"user\": {\n    \"id\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n    \"fullName\": \"Mohammed Zaki\",\n    \"email\": \"mohammed@gmail.com\",\n    \"roles\": [\"user\"]\n  },\n  \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGVhNC0zNGNmLTc1ZDMtYWIyNS1lZTgzMjAyYTc5NjIiLCJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzgyNjU4NTk2LCJleHAiOjE3ODI2NjIxOTZ9.TMRPqtWauQmUYzWNamw2SqqhvVOcnyUi917gB5QnxEM\"\n}"
             }
           ]
         }
@@ -169,10 +164,23 @@
         {
           "name": "GET /api/projects",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGViNC0wN2E0LTcyNmUtODZmYi00NzU0ZGNhMTUxMGUiLCJlbWFpbCI6Im1vc3RhZmFAZ21haWwuY29tIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE3ODI2NTgxMzYsImV4cCI6MTc4MjY2MTczNn0.FeX7e586ZifsZew0DMfVi81_FGP8ehQQkuITBlra7DE",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
+            "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/projects?limit=10",
-              "host": ["{{baseUrl}}"],
+              "raw": "http://localhost:3000/api/projects?limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
               "path": ["api", "projects"],
               "query": [
                 {
@@ -188,32 +196,49 @@
                 }
               ]
             },
-            "auth": {
-              "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
-            },
             "description": "List all projects the authenticated user belongs to. Supports cursor-based pagination."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "GET",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects?limit=10",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects"],
-                  "query": [{ "key": "limit", "value": "10" }]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects?limit=10",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n      \"title\": \"My Project\",\n      \"description\": \"A sample project\",\n      \"status\": \"active\",\n      \"ownerId\": \"019748a0-1234-7000-0000-abcdef123456\",\n      \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n      \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n    }\n  ],\n  \"nextCursor\": null\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n      \"title\": \"My Project\",\n      \"description\": \"A sample project description\",\n      \"status\": \"active\",\n      \"ownerId\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n      \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n      \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n    }\n  ],\n  \"nextCursor\": null\n}"
             }
           ]
         },
@@ -229,182 +254,300 @@
                   "  pm.collectionVariables.set('projectId', json.id);",
                   "}"
                 ],
-                "type": "text/javascript"
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
-            "method": "POST",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGVhNC0zNGNmLTc1ZDMtYWIyNS1lZTgzMjAyYTc5NjIiLCJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzgyNjU4NTk2LCJleHAiOjE3ODI2NjIxOTZ9.TMRPqtWauQmUYzWNamw2SqqhvVOcnyUi917gB5QnxEM",
+                  "type": "string"
+                }
+              ]
             },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/projects",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects"]
             },
             "description": "Create a new project. The authenticated user becomes the owner. The test script saves the returned `id` to `{{projectId}}`.\n\n**Fields:**\n- `title` (string, required, max 150 chars)\n- `description` (string, optional, max 5000 chars)"
           },
           "response": [
             {
               "name": "201 Created",
-              "status": "Created",
-              "code": 201,
               "originalRequest": {
-                "method": "POST",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
                 },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/projects",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019748a0-0000-7000-0000-aaaaaaaaaaaa\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "GET /api/projects/:id",
           "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGVhNC0zNGNmLTc1ZDMtYWIyNS1lZTgzMjAyYTc5NjIiLCJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzgyNjU4NTk2LCJleHAiOjE3ODI2NjIxOTZ9.TMRPqtWauQmUYzWNamw2SqqhvVOcnyUi917gB5QnxEM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}"]
             },
             "description": "Retrieve a single project by UUID. Only accessible by the owner or a project member."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "GET",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019748a0-0000-7000-0000-aaaaaaaaaaaa\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"title\": \"My Project\",\n  \"description\": \"A sample project description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "PATCH /api/projects/:id",
           "request": {
-            "method": "PATCH",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGVhNC0zNGNmLTc1ZDMtYWIyNS1lZTgzMjAyYTc5NjIiLCJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzgyNjU4NTk2LCJleHAiOjE3ODI2NjIxOTZ9.TMRPqtWauQmUYzWNamw2SqqhvVOcnyUi917gB5QnxEM",
+                  "type": "string"
+                }
+              ]
             },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Updated Project Name\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "raw": "{\n  \"title\": \"Updated Project title\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}"]
             },
             "description": "Update a project. All fields are optional.\n\n**Fields:**\n- `title` (string, optional, max 150 chars)\n- `description` (string | null, optional, max 5000 chars)\n- `status` (enum, optional): `active` | `deleted`"
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "PATCH",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
                 },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"title\": \"Updated Project Name\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\"\n}"
+                  "raw": "{\n  \"title\": \"Updated Project title\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"title\": \"Updated Project Name\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019748a0-0000-7000-0000-aaaaaaaaaaaa\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T11:00:00.000Z\"\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"title\": \"Updated Project title\",\n  \"description\": \"Updated description\",\n  \"status\": \"active\",\n  \"ownerId\": \"019f0ea4-34cf-75d3-ab25-ee83202a7962\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T11:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "DELETE /api/projects/:id",
           "request": {
-            "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}"],
-              "query": [
+            "auth": {
+              "type": "bearer",
+              "bearer": [
                 {
-                  "key": "hard",
-                  "value": "true",
-                  "description": "Pass hard=true for a permanent delete. Omit for a soft delete (sets status to 'deleted').",
-                  "disabled": true
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTlmMGVhNC0zNGNmLTc1ZDMtYWIyNS1lZTgzMjAyYTc5NjIiLCJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzgyNjU4NTk2LCJleHAiOjE3ODI2NjIxOTZ9.TMRPqtWauQmUYzWNamw2SqqhvVOcnyUi917gB5QnxEM",
+                  "type": "string"
                 }
               ]
             },
-            "auth": {
-              "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}"]
             },
             "description": "Soft-delete a project (sets `status` to `deleted`). Pass `?hard=true` to permanently remove it from the database."
           },
           "response": [
             {
               "name": "200 OK — Soft Delete",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "DELETE",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
               "body": "{\n  \"message\": \"Project deleted\"\n}"
             }
           ]
@@ -417,10 +560,23 @@
         {
           "name": "GET /api/projects/:projectId/tasks",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
+            "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks?limit=10",
-              "host": ["{{baseUrl}}"],
+              "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks?limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
               "path": ["api", "projects", "{{projectId}}", "tasks"],
               "query": [
                 {
@@ -436,32 +592,49 @@
                 }
               ]
             },
-            "auth": {
-              "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
-            },
             "description": "List all tasks belonging to a project. Supports cursor-based pagination."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "GET",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks?limit=10",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}", "tasks"],
-                  "query": [{ "key": "limit", "value": "10" }]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks?limit=10",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}", "tasks"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"019748b0-0001-7000-0000-abcdef000001\",\n      \"title\": \"Set up CI/CD\",\n      \"description\": \"Configure GitHub Actions pipeline\",\n      \"status\": \"todo\",\n      \"priority\": 1,\n      \"dueDate\": \"2026-07-15T00:00:00.000Z\",\n      \"projectId\": \"019748a0-1234-7000-0000-abcdef123456\",\n      \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n      \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n    }\n  ],\n  \"nextCursor\": null\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"019f0ec0-0001-7000-0000-abcdef000001\",\n      \"title\": \"New task\",\n      \"description\": \"Configure GitHub Actions\",\n      \"status\": \"in_progress\",\n      \"priority\": 3,\n      \"dueDate\": \"2026-07-28T00:00:00.000Z\",\n      \"projectId\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n      \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n      \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n    }\n  ],\n  \"nextCursor\": null\n}"
             }
           ]
         },
@@ -477,179 +650,342 @@
                   "  pm.collectionVariables.set('taskId', json.id);",
                   "}"
                 ],
-                "type": "text/javascript"
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
-            "method": "POST",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}", "tasks"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
             },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Set up CI/CD\",\n  \"description\": \"Configure GitHub Actions pipeline\",\n  \"status\": \"todo\",\n  \"priority\": 1,\n  \"dueDate\": \"2026-07-15T00:00:00.000Z\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "raw": "{\n  \"title\": \"New task\",\n  \"description\": \"Configure GitHub Actions\",\n  \"status\": \"in_progress\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-28T00:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}", "tasks"]
             },
             "description": "Create a new task inside the specified project. The test script saves the returned `id` to `{{taskId}}`.\n\n**Fields:**\n- `title` (string, required, max 200 chars)\n- `description` (string | null, optional, max 5000 chars)\n- `status` (enum, optional, default `todo`): `todo` | `in_progress` | `done`\n- `priority` (integer ≥ 1, optional, default 1)\n- `dueDate` (ISO-8601 datetime, optional)"
           },
           "response": [
             {
               "name": "201 Created",
-              "status": "Created",
-              "code": 201,
               "originalRequest": {
-                "method": "POST",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}", "tasks"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
                 },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"title\": \"Set up CI/CD\",\n  \"description\": \"Configure GitHub Actions pipeline\",\n  \"status\": \"todo\",\n  \"priority\": 1,\n  \"dueDate\": \"2026-07-15T00:00:00.000Z\"\n}"
+                  "raw": "{\n  \"title\": \"New task\",\n  \"description\": \"Configure GitHub Actions\",\n  \"status\": \"in_progress\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-28T00:00:00.000Z\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}", "tasks"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748b0-0001-7000-0000-abcdef000001\",\n  \"title\": \"Set up CI/CD\",\n  \"description\": \"Configure GitHub Actions pipeline\",\n  \"status\": \"todo\",\n  \"priority\": 1,\n  \"dueDate\": \"2026-07-15T00:00:00.000Z\",\n  \"projectId\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0ec0-0001-7000-0000-abcdef000001\",\n  \"title\": \"New task\",\n  \"description\": \"Configure GitHub Actions\",\n  \"status\": \"in_progress\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-28T00:00:00.000Z\",\n  \"projectId\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "GET /api/projects/:projectId/tasks/:taskId",
           "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
             },
             "description": "Retrieve a single task by UUID within the given project."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "GET",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748b0-0001-7000-0000-abcdef000001\",\n  \"title\": \"Set up CI/CD\",\n  \"description\": \"Configure GitHub Actions pipeline\",\n  \"status\": \"todo\",\n  \"priority\": 1,\n  \"dueDate\": \"2026-07-15T00:00:00.000Z\",\n  \"projectId\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0ec0-0001-7000-0000-abcdef000001\",\n  \"title\": \"New task\",\n  \"description\": \"Configure GitHub Actions\",\n  \"status\": \"in_progress\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-28T00:00:00.000Z\",\n  \"projectId\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T10:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "PATCH /api/projects/:projectId/tasks/:taskId",
           "request": {
-            "method": "PATCH",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
             },
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Set up CI/CD pipeline\",\n  \"status\": \"in_progress\",\n  \"priority\": 2,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\"\n}",
-              "options": { "raw": { "language": "json" } }
+              "raw": "{\n  \"title\": \"Configure GitHub Actions\",\n  \"status\": \"done\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
             },
             "description": "Update a task. All fields are optional.\n\n**Fields:**\n- `title` (string, optional, max 200 chars)\n- `description` (string | null, optional, max 5000 chars)\n- `status` (enum, optional): `todo` | `in_progress` | `done`\n- `priority` (integer ≥ 1, optional)\n- `dueDate` (ISO-8601 datetime | null, optional)"
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "PATCH",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
                 },
-                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"title\": \"Set up CI/CD pipeline\",\n  \"status\": \"in_progress\",\n  \"priority\": 2,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\"\n}"
+                  "raw": "{\n  \"title\": \"Configure GitHub Actions\",\n  \"status\": \"done\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
-              "body": "{\n  \"id\": \"019748b0-0001-7000-0000-abcdef000001\",\n  \"title\": \"Set up CI/CD pipeline\",\n  \"description\": \"Configure GitHub Actions pipeline\",\n  \"status\": \"in_progress\",\n  \"priority\": 2,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\",\n  \"projectId\": \"019748a0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T11:00:00.000Z\"\n}"
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"019f0ec0-0001-7000-0000-abcdef000001\",\n  \"title\": \"Configure GitHub Actions\",\n  \"description\": \"Configure GitHub Actions\",\n  \"status\": \"done\",\n  \"priority\": 3,\n  \"dueDate\": \"2026-07-20T00:00:00.000Z\",\n  \"projectId\": \"019f0eb0-1234-7000-0000-abcdef123456\",\n  \"createdAt\": \"2026-06-28T10:00:00.000Z\",\n  \"updatedAt\": \"2026-06-28T11:00:00.000Z\"\n}"
             }
           ]
         },
         {
           "name": "DELETE /api/projects/:projectId/tasks/:taskId",
           "request": {
-            "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-            },
             "auth": {
               "type": "bearer",
-              "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
             },
             "description": "Permanently delete a task from the specified project."
           },
           "response": [
             {
               "name": "200 OK",
-              "status": "OK",
-              "code": 200,
               "originalRequest": {
-                "method": "DELETE",
-                "url": {
-                  "raw": "{{baseUrl}}/api/projects/{{projectId}}/tasks/{{taskId}}",
-                  "host": ["{{baseUrl}}"],
-                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
-                },
                 "auth": {
                   "type": "bearer",
-                  "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/projects/{{projectId}}/tasks/{{taskId}}",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "projects", "{{projectId}}", "tasks", "{{taskId}}"]
                 }
               },
-              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
               "body": "{\n  \"message\": \"Task deleted\"\n}"
             }
           ]
         }
       ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "description": "Set this after calling POST /api/auth/login"
+    },
+    {
+      "key": "projectId",
+      "value": "",
+      "description": "Set this after creating or listing a project"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "description": "Set this after creating or listing a task"
     }
   ]
 }

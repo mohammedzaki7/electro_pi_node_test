@@ -114,7 +114,7 @@ describe("AuthService", () => {
       });
     });
 
-    it("throws 401 when password is wrong", async () => {
+    it("throws 401 when password is not correct", async () => {
       mockVerify.mockResolvedValue(false);
       mockUsersRepo.createQueryBuilder.mockReturnValue(
         makeQB({ getOne: jest.fn().mockResolvedValue(makeUser()) }),

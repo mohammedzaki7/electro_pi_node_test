@@ -1,10 +1,8 @@
 import {
-  Column,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
-  Unique,
 } from "typeorm";
 import { BaseEntity } from "./base.entity";
 import { User } from "./user.entity";
@@ -15,12 +13,10 @@ import { Role } from "./role.entity";
  */
 @Entity("user_roles")
 export class UserRole extends BaseEntity {
-  @PrimaryColumn("uuid")
-  @Column({ name: "user_id", type: "uuid" })
+  @PrimaryColumn({ name: "user_id", type: "uuid" })
   userId: string;
 
-  @PrimaryColumn("uuid")
-  @Column({ name: "role_id", type: "uuid" })
+  @PrimaryColumn({ name: "role_id", type: "uuid" })
   roleId: string;
 
   @ManyToOne(() => User, (user) => user.userRoles, { onDelete: "CASCADE" })

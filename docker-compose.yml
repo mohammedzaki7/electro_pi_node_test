@@ -29,10 +29,12 @@ services:
       DB_PORT: 5432
     ports:
       - "3000:3000"
+    volumes:
+      - ./src:/app/src
     depends_on:
       postgres:
         condition: service_healthy
-    command: node_modules/.bin/ts-node src/server.ts
+    command: sh -c "npm run migration:run && npm run dev"
 
 volumes:
   postgres_data:

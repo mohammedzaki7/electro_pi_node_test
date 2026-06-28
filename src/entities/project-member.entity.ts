@@ -1,10 +1,8 @@
 import {
-  Column,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
-  Unique,
 } from "typeorm";
 import { BaseEntity } from "./base.entity";
 import { User } from "./user.entity";
@@ -16,12 +14,10 @@ import { Project } from "./project.entity";
  */
 @Entity("project_member")
 export class ProjectMember extends BaseEntity {
-  @PrimaryColumn("uuid")
-  @Column({ name: "project_id", type: "uuid" })
+  @PrimaryColumn({ name: "project_id", type: "uuid" })
   projectId: string;
 
-  @PrimaryColumn("uuid")
-  @Column({ name: "user_id", type: "uuid" })
+  @PrimaryColumn({ name: "user_id", type: "uuid" })
   userId: string;
 
   @ManyToOne(() => Project, (project) => project.members, {

@@ -23,7 +23,6 @@ export interface RegisterResult {
 }
 
 export interface AuthResult {
-  user: { id: string; fullName: string; email: string; roles: string[] };
   accessToken: string;
 }
 
@@ -88,7 +87,6 @@ export class AuthService {
 
     const roles = user.userRoles.map((ur) => ur.role.name);
     return {
-      user: { id: user.id, fullName: user.fullName, email: user.email, roles },
       accessToken: signAccessToken({ sub: user.id, email: user.email, roles }),
     };
   }

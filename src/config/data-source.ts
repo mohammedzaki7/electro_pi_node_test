@@ -17,4 +17,5 @@ export const AppDataSource = new DataSource({
   database: env.db.name,
   logging: false,
   entities: [User, Role, UserRole, Project, ProjectMember, Task],
+  migrations: ["src/migrations/*.ts"],
 });

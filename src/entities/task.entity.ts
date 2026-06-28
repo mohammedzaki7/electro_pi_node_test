@@ -9,7 +9,6 @@ import {
 import { v7 as uuidv7 } from "uuid";
 import { BaseEntity } from "./base.entity";
 import { Project } from "./project.entity";
-import { User } from "./user.entity";
 
 export enum TaskStatus {
   TODO = "todo",

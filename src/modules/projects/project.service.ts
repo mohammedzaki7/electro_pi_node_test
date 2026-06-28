@@ -84,9 +84,6 @@ export class ProjectService {
         userId,
       })
       .where("project.id = :projectId", { projectId })
-      .andWhere("project.status != :deleted", {
-        deleted: ProjectStatus.DELETED,
-      })
       .getOneOrFail();
   }
 

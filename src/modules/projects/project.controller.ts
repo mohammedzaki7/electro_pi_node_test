@@ -40,7 +40,7 @@ export class ProjectController {
     res.status(200).json(project);
   };
 
-  // DELETE /projects/:id            -> soft delete (status = deleted)
+  // DELETE /projects/:id            -> soft delete, change status to deleted
   // DELETE /projects/:id?hard=true  -> permanent delete
   remove = async (req: Request, res: Response): Promise<void> => {
     const isAdmin = req.user!.roles.includes("admin");

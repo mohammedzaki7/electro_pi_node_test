@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  Unique,
 } from "typeorm";
 import { v7 as uuidv7 } from "uuid";
 import { BaseEntity } from "./base.entity";
@@ -18,6 +19,7 @@ export enum ProjectStatus {
   DELETED = "deleted",
 }
 
+@Unique(["title", "ownerId"])
 @Entity("projects")
 export class Project extends BaseEntity {
   @PrimaryColumn("uuid")

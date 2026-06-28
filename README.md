@@ -2,14 +2,20 @@
 
 A REST API for managing projects and tasks. Built with Node.js, TypeScript, Express, TypeORM, and PostgreSQL.
 
+## API Docs
+
+Import the api_docs.json file in PostMan to test the routes
+
 ## Setup
 
+Add .env file in root, then run the following command:
+
 ```bash
-cp .env.example .env
 docker compose up --build -d
 ```
 
 `.env.example`:
+
 ```env
 PORT=3000
 
